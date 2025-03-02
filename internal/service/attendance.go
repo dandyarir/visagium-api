@@ -90,14 +90,14 @@ func (s *AttendanceServiceImpl) GetAttendanceByDate(ctx context.Context, date st
 			atd = groupedAttendaces[attendance.EmployeeID]
 		}
 
-		if attendance.ClockInTime != "" {
-			clockIn = attendance.ClockInTime
+		if attendance.ClockInTime != nil {
+			clockIn = *attendance.ClockInTime
 		}
 		if attendance.ClockOutTime != nil {
 			clockOut = attendance.ClockOutTime
 		}
 
-		atd.ClockInTime = clockIn
+		atd.ClockInTime = &clockIn
 		atd.ClockOutTime = clockOut
 
 		groupedAttendaces[attendance.EmployeeID] = atd

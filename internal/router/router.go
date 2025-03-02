@@ -26,6 +26,10 @@ func SetupRoutes(e *echo.Echo, db *sql.DB, cfg *config.Config) {
 	attendanceHandler := handler.NewAttendanceHandler(attendanceService)
 
 	// Set up routes
+	// route for health check
+	e.GET("/health", func(c echo.Context) error {
+		return c.JSON(200, map[string]string{"status": "ok"})
+	})
 
 	// Employee routes
 	employeeGroup := e.Group("/Employee")
@@ -36,4 +40,6 @@ func SetupRoutes(e *echo.Echo, db *sql.DB, cfg *config.Config) {
 	attendanceGroup := e.Group("/Attendance")
 	attendanceGroup.POST("", attendanceHandler.SubmitAttendance)
 	attendanceGroup.GET("", attendanceHandler.GetAttendance)
+
+
 }

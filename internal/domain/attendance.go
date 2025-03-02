@@ -29,7 +29,7 @@ type AttendanceResponse struct {
 type AttendanceData struct {
 	EmployeeID   int64   `json:"employe_id"`
 	Name         string  `json:"name"`
-	ClockInTime  string  `json:"clock_in_time"`
+	ClockInTime  *string  `json:"clock_in_time"`
 	ClockOutTime *string `json:"clock_out_time"`
 }
 
