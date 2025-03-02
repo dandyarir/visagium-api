@@ -24,7 +24,7 @@ func Load() (*Config, error) {
 	cfg := &Config{
 		DBHost:        getEnv("DB_HOST", "localhost"),
 		DBPort:        getEnv("DB_PORT", "5432"),
-		DBUser:        getEnv("DB_USER", "postgres"),
+		DBUser:        getEnv("DB_USER", "postgres_visagium"),
 		DBPassword:    getEnv("DB_PASSWORD", "postgres"),
 		DBName:        getEnv("DB_NAME", "visagium_backend"),
 		DBSSLMode:     getEnv("DB_SSL_MODE", "disable"),
