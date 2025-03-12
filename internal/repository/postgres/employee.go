@@ -44,7 +44,7 @@ func (r *EmployeeRepository) Create(ctx context.Context, employee *domain.Employ
 
 // Delete deletes an employee from the database
 func (r *EmployeeRepository) Delete(ctx context.Context, employeeID int64) error {
-	query := `DELETE FROM "Employee" WHERE nip = $1`
+	query := `UPDATE "Employee" SET deleted_at = NOW() WHERE nip = $1`
 
 	result, err := r.db.ExecContext(ctx, query, employeeID)
 	if err != nil {
