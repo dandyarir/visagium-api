@@ -65,7 +65,7 @@ func (r *EmployeeRepository) Delete(ctx context.Context, employeeID int64) error
 
 // GetByID gets an employee by ID
 func (r *EmployeeRepository) GetByID(ctx context.Context, employeeID int64) (*domain.Employee, error) {
-	query := `SELECT nip, name, created_at FROM "Employee" WHERE nip = $1`
+	query := `SELECT nip, name, created_at FROM "Employee" WHERE nip = $1 AND deleted_at IS NULL`
 
 	var employee domain.Employee
 	err := r.db.QueryRowContext(ctx, query, employeeID).Scan(

@@ -1,7 +1,8 @@
 CREATE TABLE "Employee" (
   "nip" BIGINT PRIMARY KEY,
   "name" varchar(100),
-  "created_at" timestamp DEFAULT (CURRENT_TIMESTAMP)
+  "created_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
+  "deleted_at" timestamp DEFAULT NULL
 );
 
 CREATE TYPE activity_type_enum AS ENUM ('check-in', 'check-out', 'break-start', 'break-end');
